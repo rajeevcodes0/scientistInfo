@@ -1,0 +1,197 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+body{
+    overflow-x: hidden;
+    background-image: url("assets/app-background.jpg");
+}
+
+.app-flex-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100vw;
+    
+}
+
+header{
+    color:white;
+    text-align: center;
+    height: 10vh;
+}   
+
+.image-rows-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+img{
+    height: 20vh;
+    width: 20vh;
+
+    
+    position: relative;
+}
+
+
+
+
+.image-container{
+    position: relative;
+    overflow: hidden;
+    margin:20px;
+    border-radius: 10px;
+}
+
+.image-container.selected{
+    box-shadow: 0px 0px 100px 1px rgb(151, 118, 240);
+    transition: box-shadow 1s;
+    position: fixed;
+    overflow: unset;
+    top:10%;
+    left:50%;
+    transform: translateX(-50%);
+    transition: all 0.3s;
+
+}
+
+.image-container.selected .name{
+    transform: translate(0%,50%);
+    transition: all 1s;   
+}
+
+.image-container.selected .image-overlay{
+    background-color: transparent;
+    transition: all 1s;  
+}
+
+.image-container:hover{
+    box-shadow: 0px 0px 100px 1px rgb(151, 118, 240);
+    transition: box-shadow 1s;
+}
+
+
+
+.image-container:nth-last-child(odd){
+    transform: rotate(10deg) scale(1);
+}
+
+img:nth-last-child(even){
+    transform: rotate(-10deg) scale(1);
+}
+
+img+.image-overlay{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(43, 41, 41,0.7);
+}
+
+.image-container:hover .image-overlay{
+   background-color: transparent;
+   transition: all 1s;
+}
+
+
+.name{
+    position: absolute;
+    bottom:0;
+    right:0;
+
+    transform: translateX(110%);
+    background-color: rgb(219, 219, 219);
+    border-radius: 5px;
+    padding:10px;
+
+    transition: all 1s;
+    font-size: 1em;
+}
+
+.image-container:hover .name{
+    transform: translateX(0%);
+    transition: all 1s;
+}
+
+.image-container:focus .name{
+    transform: translateX(0%);
+    transition: all 1s;
+}
+
+
+.image-row{
+    margin:1vh 0;
+    display: flex;
+
+}
+
+.image-rows-container .image-row:nth-child(odd){
+    transform: translateX(20vh);
+}
+
+.image-rows-container .image-row:nth-child(even){
+    transform: translateX(1vh);
+}
+
+.scientist-info-container{
+    display: none;
+    color:white;
+    font-size: 20px;
+    border: 1px solid white;
+    width: 60%;
+    margin:auto;
+    padding:10px;
+    border-radius: 5px;
+    position: fixed;
+    top:40vh;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.scientist-name{
+    margin:10px 0;
+}
+
+@media (max-width:500px) {
+    img{
+        height: 8vh;
+        width: 8vh;
+        position: relative;
+    }
+    .image-rows-container .image-row:nth-child(odd){
+        transform: translateX(1vh);
+    }
+    .name{
+        font-size: 10px;
+    }
+
+
+    .scientist-info-container{
+        top:30vh;
+        width: 80%;
+    }
+
+    .image-container.selected{
+        box-shadow: 0px 0px 100px 1px rgb(151, 118, 240);
+        transition: box-shadow 1s;
+        position: fixed;
+        top:10%;
+        left:50%;
+        transform: translateX(-50%) scale(1.5);
+    
+    }
+
+    .app-flex-container{
+        justify-content: unset;
+    }
+
+}
